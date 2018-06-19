@@ -50,14 +50,18 @@ X_train, X_test, y_train , y_test = train_test_split(X, y , test_size=0.3, rando
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
+from keras.models import Model
+from keras.layers import Input
 
-model = Sequential()
+inputs = Input(shape=(2,))
 
-model.add(Dense(4, input_shape=(2,), activation='tanh', name='Hidden-1'))
+x = Dense(4, input_shape=(2,), activation='tanh', name='Hidden-1')(inputs)
 
-model.add(Dense(4, activation='tanh', name='Hidden-2'))
+x = Dense(4, input_shape=(2,), activation='tanh', name='Hidden-2')(x)
 
-model.add(Dense(1, activation='sigmoid', name='Output_layer'))
+o = Dense(1, activation='sigmoid', name='Output_layer')(x)
+
+model = Model(inputs=inputs, outputs=o)
 
 model.summary()
 
