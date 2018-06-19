@@ -10,6 +10,8 @@ mkl = "*"
 sklearn = "*"
 matplotlib = "*"
 cntk = "*"
+pydot = "*"
+graphviz = "*"
 
 [dev-packages]
 
